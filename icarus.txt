@@ -1,0 +1,47 @@
+# Simply copy pasted the values from Icarus so I don't have to relook them up.
+# These Icarus values give very similar results to the OpenRocket model so I 
+# think they're pretty accurate.
+
+# Rocket class that holds all these variables
+class Rocket:
+    def __init__(self):
+        # Rocket properties
+        self.dry_mass = 80.28  # kg
+        self.prop_mass = 30.39  # kg
+        self.burn_time = 5.647  # s
+        self.mass = self.dry_mass + self.prop_mass  # kg
+        self.mdot = self.prop_mass / self.burn_time  # kg/s
+        self.cd = 0  # unitless (initialized later)
+        self.diameter = 0.2032  # m
+        self.reference_area = 3.1415926535 * (self.diameter / 2) ** 2  # m^2
+
+        # Engine properties
+        self.chamber_k = 1.1926  # unitless
+        self.chamber_M = 0.023889  # kg/mol
+        self.chamber_R = 8.31446261815324 / self.chamber_M  # J/(kg*K)
+        self.chamber_temp = 3016.32  # K
+        self.chamber_pressure = 3447378.64  # Pa
+        self.throat_area = 0.00246362965667312  # m^2
+        self.nc_star = 0.9  # unitless
+        self.ncf = 0.98  # unitless
+        self.exit_area = 0  # m^2 (initialized later)
+        self.exit_pressure = 0  # Pa (initialized later)
+        self.exit_velocity = 0  # m/s (initialized later)
+        self.thrust = 0  # N (initialized later)
+        self.drag = 0 # N (initialized later)
+
+        # Kinematic properties
+        self.height = 0  # m
+        self.velocity = 0  # m/s
+        self.mach_no = 0  # unitless
+        self.acceleration = 0  # m/s^2
+        self.t = 0  # s
+
+        # Environment properties
+        self.sea_level = 620  # m (elevation of FAR launch site)
+        self.ambient_pressure = 0  # Pa (initialized later)
+        self.ambient_temp = 0  # K (initialized later)
+        self.ambient_speed_of_sound = 0  # m/s (initialized later)
+        self.ambient_density = 0  # kg/m^3 (initialized later)
+        self.g = 9.80665  # m/s^2
+        self.dt = 0.01  # s
